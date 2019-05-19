@@ -1,0 +1,2 @@
+#!/bin/bash
+free -h | grep Mem | awk '/[0-9]/{print $3}'

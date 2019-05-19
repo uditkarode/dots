@@ -1,0 +1,34 @@
+#! /bin/sh
+
+#### AUTOSTART ####
+sxhkd &
+wal -i $HOME/Pictures/Wallpapers/icy.jpg &
+synclient TapButton1=1 TapButton2=3 TapButton3=2 & #For laptop touchpad
+xset -b & #For annoying beeping sounds
+compton &
+polybar top &
+polybar bottom &
+pulseaudio &
+homewifi &
+
+#### WORKSPACES AND BORDERS #### 
+
+#Monitor allocation and their workspaces
+#bspc monitor -d Terminal Sublime Firefox Thunar Evince
+bspc monitor -d I II III IV V VI VII VIII IX X
+
+#Border gaps,width, and padding
+bspc config border_width         0
+bspc config window_gap           9
+bspc config split_ratio          0.3
+bspc config borderless_monocle   true
+bspc config gapless_monocle      true
+
+bspc config top_padding          19
+bspc config bottom_padding       1
+bspc config left_padding         2
+bspc config right_padding 	 2
+
+#Focus on pointer
+bspc config focus_follows_pointer true
+bspc config pointer_follows_focus true

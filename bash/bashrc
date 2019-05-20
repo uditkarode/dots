@@ -1,0 +1,20 @@
+# only run interactively
+[[ $- != *i* ]] && return
+
+PS1="\[\033[0;31m\]\342\224\214\342\224\200\$([[ \$? != 0 ]] && echo \"[\[\033[0;31m\]\[x\]\033[0;31m]\342\224\200\")[$(if [[ ${EUID} == 0 ]]; then echo '\[\033[01;31m\]root\[\033[01;33m\]@\[\033[01;96m\]\h'; else echo '\[\033[0;39m\]\e[31m\u\[\033[01;33m\]@\[\033[01;96m\]\h'; fi)\[\033[0;31m\]]\342\224\200[\[\033[0;32m\]\w\[\033[0;31m\]]\n\[\033[0;31m\]\342\224\224\342\224\200\342\224\200\342\225\274 \[\033[0m\]\[\e[01;33m\]\\$\[\e[0m\] "
+
+alias espeak="espeak 2>/dev/null"
+alias ls="ls --color=auto"
+alias nyancat="nyancat -ns"
+alias bgtask="1>/dev/null 2>/dev/null &"
+alias pipes="pipes -t6"
+
+# handy short forms
+alias pa-ss="pacman -Ss"
+alias pa-s="sudo pacman -S"
+alias pa-rns="sudo pacman -Rns"
+alias pa-q="pacman -Qq"
+
+export LC_ALL="C"
+export LC_MESSAGES=C.UTF-8
+export LC_CTYPE=C.UTF-8

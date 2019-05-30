@@ -1,0 +1,14 @@
+#!/bin/bash
+
+G='\033[0;32m'
+Y='\033[0;33m'
+N='\033[0m'
+
+sudo echo
+echo -e "${Y}Python Server Active${N}"
+echo -e "${G}at${N}: `pwd`"
+echo -e "${G}containing${N}: "
+echo -e "${Y}`ls -p`${N}"
+echo -e "${G}ip${N}: `ip -4 addr show wlp1s0 | grep -oP '(?<=inet\s)\d+(\.\d+){3}'`"
+echo -e "${G}port${N}: 80"
+sudo python -m http.server 80 > /dev/null

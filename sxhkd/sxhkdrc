@@ -1,14 +1,10 @@
 ######### MY PERSONAL KEYBINDS ########### 
 
-super + shift + q
-	qutebrowser
+super + shift + g
+	google-chrome-stable
 
-super + shift + m
-	midori
-
-#Scrot [Shots currently go to your Pictures folder]
 super + shift + s
-	scrot '%m-%d-%y_$wx$h_scrot.png' -e 'mv $f ~/Pictures/'
+	scrot '%T.png' -e 'mv $f ~/Pictures/Screenshots/%Y%m%d#%T.png'
 
 # VOLUME
 
@@ -32,20 +28,20 @@ super + XF86AudioLowerVolume
 # BRIGHTNESS
 
 XF86MonBrightnessUp
-	light -A 10;
+	sudo light -A 2;
 
 XF86MonBrightnessDown
-	light -U 10;
+	sudo light -U 2;
 
 # HOTKEYS
 
 # terminal emulator
 super + Return
-	urxvt
+	hyper
 
 # program launcher
 super + d
-	rofi -show run
+	rofi -show run -font Monaco\ 15
 
 # make sxhkd reload its configuration files:
 super + Escape

@@ -1,0 +1,49 @@
+[options]
+font = MonacoB2 Bold 14.1
+
+[colors]
+foreground          = #EEFFFF
+foreground_bold     = #EEFFFF
+cursor              = #FFAE43
+cursor_foreground   = #212121
+background          = rgba(33, 33, 33)
+
+# 16 color space
+
+# Black, Gray, Silver, White
+color0  = #212121
+color8  = #4A4A4A
+color7  = #EEFFFF
+color15 = #FFFFFF
+
+# Red
+color1  = #E54B4B
+color9  = #E54B4B
+
+# Green
+color2  = #9ECE58
+color10 = #9ECE58
+
+# Yellow
+color3  = #FAED70
+color11 = #FAED70
+
+# Blue
+color4  = #82AAFF
+color12 = #82AAFF
+
+# Purple
+color5  = #396FE2
+color13 = #396FE2
+
+# Teal
+color6  = #89DDFF
+color14 = #89DDFF
+
+# Extra colors
+color16 = #F78C6C
+color17 = #FF5370
+color18 = #303030
+color19 = #353535
+color20 = #B2CCD6
+color21 = #EEFFFF

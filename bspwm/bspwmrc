@@ -1,16 +1,13 @@
 #! /bin/sh
 
-#### AUTOSTART ####
 sxhkd &
-wal -i $HOME/Pictures/Wallpapers/bspwm.jpg &
-synclient TapButton1=1 TapButton2=3 TapButton3=2 & #For laptop touchpad
-xset -b & #For annoying beeping sounds
+wal -i $HOME/Pictures/Wallpapers/bspwmtwo.jpg &
+synclient TapButton1=1 TapButton2=3 TapButton3=2 & 
+xset -b & 
 compton &
 polybar top &
 polybar bottom &
 libinput-gestures-setup start
-
-#### WORKSPACES AND BORDERS #### 
 
 extmon=$(xrandr --query | grep 'DP-3')
 if [[ ! $extmon == *disconnected* ]]; then
@@ -22,18 +19,16 @@ else
 	bspc monitor 'eDP-1' -d 1 2 3 4 5 6 7 8 9
 fi
 
-#Border gaps,width, and padding
 bspc config border_width         0
 bspc config window_gap           9
 bspc config split_ratio          0.5
 bspc config borderless_monocle   true
 bspc config gapless_monocle      true
 
-bspc config top_padding          24
-bspc config bottom_padding       27
-bspc config left_padding         1
-bspc config right_padding 	 2
+bspc config top_padding          21
+bspc config bottom_padding       25
+bspc config left_padding         0
+bspc config right_padding 	 0
 
-#Focus on pointer
 bspc config focus_follows_pointer true
 bspc config pointer_follows_focus false

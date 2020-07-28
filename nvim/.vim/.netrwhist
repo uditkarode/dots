@@ -1,0 +1,5 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhistcnt =3
+let g:netrw_dirhist_3='/home/udit/.config/sxhkd'
+let g:netrw_dirhist_2='/home/udit/.config/bspwm'
+let g:netrw_dirhist_1='/home/udit/.config/systemd/user'

@@ -2,13 +2,18 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="/Users/uditkarode/.oh-my-zsh"
+export ZSH="/home/udit/.oh-my-zsh"
+
+# XBPS aliases, because the commands are so fucking long
+alias xbpss="xbps-query -Rs"
+alias xbpsi="sudo xbps-install -S"
+alias xbpsu="sudo xbps-install -Syu"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="theunraveler"
+ZSH_THEME="blinks"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load

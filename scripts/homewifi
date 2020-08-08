@@ -1,9 +1,0 @@
-#!/bin/bash
-
-echo "Attempting connection to home wifi..."
-
-wifipass="Vm0wd2VHUXhUWGROVldScFVtMW9WVll3Wkc5V1JsbDNXa1JTVjJKSGVkgHjneSo2hyVmxVeFYyTkVRbUZXVjFKSVZqSjRZV014VG5OWApiRnBPMfcXWW10S1ZWWnRlRlpsUmxsNFdraFdhUXBTYlZKd1ZqQmtiMkl4WkZoa1IzUlVUVlZ3ZWxZeU5VZFdkM0J1dsWlVRbGRUCk1EVnpWMjVPV0dKVldsaFVWbVJUVWpGUmVGWnNaR2hWV0VKVVZtMTBkMkl4WkhOYVNHUlNDbUY2VmxoVmJHaHpWMjFXZEdWR1NsZFcKYlUwd1ZERldUMkpzUWxWTlJYTkxDZz09Cg=="
-
-for i in {1..10}; do wifipass=`echo "$wifipass" | base64 --decode`; done
-echo "$wifipass" | nmcli con up -D4RK- --ask &
-unset wifipass

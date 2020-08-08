@@ -1,0 +1,4 @@
+#!/bin/bash
+if [ -f /sys/bus/pci/devices/0000\:00\:01.0/remove ]; then
+	echo -n 1 > /sys/bus/pci/devices/0000\:00\:01.0/remove
+fi

@@ -39,12 +39,12 @@ read_battery() {
 }
 
 read_volume() {
-  var=$(amixer get Master)
+  var=$(pamixer --get-mute)
 
   vol=""
   case $var in
-	  *'[on]') vol="$(pamixer --get-volume)";;
-    *'[off]') vol="$vol MUTE";;
+	  *'false') vol="$(pamixer --get-volume)";;
+	  *'true') vol="MUTE";;
   esac
 
   if [ "$vol" -le 33 ] 2>/dev/null; then
@@ -54,7 +54,7 @@ read_volume() {
   elif [ "$vol" -le 100 ] 2>/dev/null; then
     vol=" 🔊 $vol"
   elif [ "$vol" = "MUTE" ]; then
-    vol=" 🔇"
+    vol=" 🔇 $(pamixer --get-volume)"
   fi
 
   # echo "$vol"

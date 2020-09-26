@@ -2,6 +2,9 @@
 
 modprobe acpi_call
 intel-undervolt apply
+echo deep > /sys/power/mem_sleep
+echo '1' > '/sys/module/snd_hda_intel/parameters/power_save'
+echo '1500' > '/proc/sys/vm/dirty_writeback_centisecs'
 
 if lsmod | grep -q acpi_call; then
 methods="
@@ -18,7 +21,6 @@ for m in $methods; do
         ;;
         *)
             echo "works!"
-            # break # try out outher methods too
         ;;
     esac
 done

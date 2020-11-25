@@ -1,14 +1,18 @@
 set $mod Mod4
 
-output eDP-1 pos 0 0 res 1920x1080
-output DP-3 pos 1920 0 res 1920x1080
+output eDP-1 disable
+output DP-3 pos 0 0 res 1920x1080
 
 gaps inner 0
 gaps outer 0
 
 # Startup stuff
 exec "swaybg -o eDP-1 --image /home/udit/dots/wallies/bspwmtwo.jpg -o DP-3 --image Pictures/wall.jpg"
+exec "waybar &"
 
+seat seat0 xcursor_theme capitaine-cursors 64
+
+default_border pixel 0
 # Pulse Audio controls
 bindsym XF86AudioRaiseVolume exec "pamixer --allow-boost -i 5"
 bindsym XF86AudioLowerVolume exec "pamixer --allow-boost -d 5"
@@ -144,18 +148,8 @@ bindsym $mod+Shift+0 move container to workspace $ws10
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
-# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
-bindsym $mod+Shift+r restart
-# exit i3 (logs you out of your X session)
-bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
 
 mode "resize" {
-        # These bindings trigger as soon as you enter the resize mode
-
-        # Pressing left will shrink the window’s width.
-        # Pressing right will grow the window’s width.
-        # Pressing up will shrink the window’s height.
-        # Pressing down will grow the window’s height.
         bindsym j resize shrink width 10 px or 10 ppt
         bindsym k resize grow height 10 px or 10 ppt
         bindsym l resize shrink height 10 px or 10 ppt
@@ -175,11 +169,6 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-bar {
-	position top
-	status_command waybar
-}
-
 input type:touchpad {
     tap enabled
     natural_scroll enabled
@@ -187,5 +176,5 @@ input type:touchpad {
 
 input "1133:49271:Logitech_USB_Optical_Mouse" {
     accel_profile flat
-    pointer_accel 0.1
+    pointer_accel -0.3
 }

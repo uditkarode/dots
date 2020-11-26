@@ -16,6 +16,10 @@
     "height": 22,
 
     "modules-left": [
+    "sway/mode",
+            "sway/workspaces",
+            "custom/arrow10",
+          "sway/window"
     ],
 
     "modules-right": [
@@ -27,10 +31,7 @@
         "memory",
         "custom/arrow4",
         "cpu",
-        "custom/arrow5",
-        "temperature",
-        "custom/arrow6",
-        "custom/arrow7",
+        "custom/arrow3",
         "battery",
         "custom/arrow8",
         "tray",

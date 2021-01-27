@@ -1,0 +1,15 @@
+#!/bin/bash
+sudo echo "su obtained!"
+cd /etc/bumblebee
+
+PMMethod="$(cat bumblebee.conf | grep PMMethod | sed 's/PMMethod=//')"
+
+if [ "$PMMethod" = "bbswitch" ]; then
+	sudo sed -i 's/PMMethod=bbswitch/PMMethod=none/g' bumblebee.conf
+	echo "GPU will turn ON on next start"
+elif [ "$PMMethod" = "none" ]; then
+	sudo sed -i 's/PMMethod=none/PMMethod=bbswitch/g' bumblebee.conf
+	echo "GPU will be turned OFF when you reboot"
+else
+	echo "Configuration rekt! Fix it manually."
+fi

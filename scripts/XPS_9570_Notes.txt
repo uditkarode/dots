@@ -1,0 +1,1 @@
+On Dell XPS 15 9570 with a 1050Ti Mobile Max-Q, the scripts disablegpu and enablegpu can be used to turn off or on the gpu respectively, when the X server is NOT running, on a TTY. Bumblebee can also be used, but this method needs you to reboot everytime you need to toggle the power state of the GPU, in which case, bumbleswitch can be used to automate the process.

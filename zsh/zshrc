@@ -1,5 +1,5 @@
-# If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
+export PATH=$HOME/fluttersdk/flutter/bin:$PATH
+export PATH="$HOME/.nvs/node/15.8.0/x64/bin:$PATH"
 
 # Path to your oh-my-zsh installation.
 export ZSH="/home/udit/.oh-my-zsh"
@@ -8,12 +8,25 @@ export ZSH="/home/udit/.oh-my-zsh"
 alias xbpss="xbps-query -Rs"
 alias xbpsi="sudo xbps-install -S"
 alias xbpsu="sudo xbps-install -Syu"
+alias xbpsr="sudo xbps-remove"
+alias getmp3="youtube-dl --extract-audio --audio-format mp3"
+alias bgsong="mpv https://nightride.fm/stream/nightride.m4a"
+alias go="/home/udit/go_sdk/go1.15.2/bin/go"
+alias gobrelease="go build -ldflags \"-s -w\""
+alias lofi="mpv https://nightride.fm/stream/rektify.m4a"
+alias icat="kitty +kitten icat"
+alias sudo="doas"
+alias mkdircd="mkdir $1 && cd $1"
+
+upload () { if [ $# = 1 -o $# = 2 ];then if [ -f "$1" ];then if [ $# = 1 ];then curl -F "file=@$1" https://file.io/ ;else if [[ "$2" =~ ^[1-9]+[wmy]$ ]];then curl -F "file=@$1" https://file.io/\?expires=$2;else echo $'Wrong expiration format.\neg. 1(w/m/y), etc.';fi;fi;else echo "file doesn't exist";fi;else echo $'usage: upload file_name.ext [expiration]\nexpiration format: 1-9(w/m/y) # (w)eeks, m(onths), (y)ear';fi }
+
+export LANG="en_US.UTF8"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="blinks"
+ZSH_THEME="af-magic"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -108,3 +121,5 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+export NVS_HOME="$HOME/.nvs"
+[ -s "$NVS_HOME/nvs.sh" ] && . "$NVS_HOME/nvs.sh"

@@ -29,6 +29,9 @@ Plug 'airblade/vim-gitgutter'
 " Show rgb or hex colors in neovim
 Plug 'lilydjwg/colorizer', { 'for': [ 'css', 'cpp' ] }
 
+" A Vim Plugin for Lively Previewing LaTeX PDF Output
+Plug 'xuhdev/vim-latex-live-preview', { 'for': 'tex' }
+
 call plug#end()
 
 " For plugins to work (still not sure what it does)
@@ -166,6 +169,9 @@ set showtabline=2               " Always show the tabline
 
 " Dont show mode cause lightline is doing it already
 set noshowmode
+
+let g:livepreview_previewer = 'zathura'
+let g:livepreview_engine = 'lualatex'
 
 let g:lightline = {
     \   'colorscheme': 'jellybeans',

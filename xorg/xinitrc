@@ -1,15 +1,13 @@
-# File paths are relative to this repo
-
 export XCURSOR_SIZE=64
-dbus-daemon --session --address=unix:path=$XDG_RUNTIME_DIR/bus &
-xinput --set-prop "Logitech USB Optical Mouse" "libinput Accel Speed" -0.98
+xinput --set-prop "Logitech USB Optical Mouse" "libinput Accel Speed" -0.82
 echo '#1089ff' > ~/.dwm_status_color
 export _JAVA_AWT_WM_NONREPARENTING=1
 if [ ! -z "$(xrandr --listmonitors | grep 'DP3')" ]; then
 	xrandr --output eDP1 --off
 fi
-picom --experimental-backends --config ../picom/picom_dwm.conf &
-hsetroot -cover ../wallies/dwm.jpg
-# github.com/uditkarode/dwm2/tree/master/dwmbar.sh
+picom --experimental-backends --config /home/udit/.config/picom/picom.conf &
+hsetroot -cover ~/Pictures/wall.jpg
+doas /bin/startcfdns &
+doas /bin/turnoffgpu &
 dwmbar &
-exec dwm
+exec dbus-launch dwm

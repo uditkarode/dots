@@ -1,0 +1,354 @@
+;==========================================================
+;
+;
+;   ██████╗  ██████╗ ██╗  ██╗   ██╗██████╗  █████╗ ██████╗
+;   ██╔══██╗██╔═══██╗██║  ╚██╗ ██╔╝██╔══██╗██╔══██╗██╔══██╗
+;   ██████╔╝██║   ██║██║   ╚████╔╝ ██████╔╝███████║██████╔╝
+;   ██╔═══╝ ██║   ██║██║    ╚██╔╝  ██╔══██╗██╔══██║██╔══██╗
+;   ██║     ╚██████╔╝███████╗██║   ██████╔╝██║  ██║██║  ██║
+;   ╚═╝      ╚═════╝ ╚══════╝╚═╝   ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝
+;
+;
+;   To learn more about how to configure Polybar
+;   go to https://github.com/jaagr/polybar
+;
+;   The README contains alot of information
+;
+;==========================================================
+
+[settings]
+screenchange-reload = true
+
+[global/wm]
+margin-top = 2
+margin-bottom = 0
+
+[colors]
+background = ${xrdb:polybar.background} 
+background-alt = ${xrdb:polybar.background-alt}
+
+foreground = ${xrdb:polybar.foreground}
+foreground-alt = ${xrdb:polybar.foreground-alt}
+
+primary = ${xrdb:polybar.primary}
+secondary = ${xrdb:polybar.secondary}
+tertiary = ${xrdb:polybar.tertiary}
+quaternary = ${xrdb:polybar.quaternary}
+quinary = ${xrdb:polybar.quinary}
+
+icon = ${xrdb:polybar.icon}
+alert = ${xrdb:polybar.alert}
+
+tag-focused-background = ${xrdb:polybar.tag-focused-background}
+tag-unfocused-background = ${xrdb:polybar.tag-unfocused-background}
+tag-visible-background = ${xrdb:polybar.tag-visible-background}
+tag-urgent-background = ${xrdb:polybar.tag-urgent-background}
+
+[bar/main]
+monitor = ${env:MONITOR:}
+monitor-fallback = eDP1
+monitor-strict = false
+width = 100%
+height = 36
+offset-x = 0%
+;offset-y = 1%
+radius = 3
+fixed-center = false
+
+enable-ipc = true
+background = ${colors.background}
+foreground = ${colors.foreground}
+
+line-size = 6
+line-color = ${colors.icon}
+
+padding-right = 1
+
+font-0 = Cascadia Mono:size=12;2
+font-1 = Font Awesome 5 Free:size=10;2
+font-2 = Font Awesome 5 Free Solid:size=10;2
+font-3 = Font Awesome 5 Brands:size=10;2
+
+modules-left = dwm
+modules-right = memory wlan battery power_usage pulseaudio pulsestatus date restart
+
+tray-position = right
+tray-padding = 2
+
+override-redirect = false
+
+cursor-click = pointer
+cursor-scroll = ns-resize
+
+
+
+[module/dwm]
+type = internal/dwm
+format = <label-tags> <label-layout> <label-floating> <label-title>
+;socket-path = /tmp/dwm.sock
+
+enable-tags-click = true
+enable-tags-scroll = true
+tags-scroll-empty = false
+tags-scroll-reverse = false
+tags-scroll-wrap = true
+enable-layout-click = true
+enable-layout-scroll = true
+layout-scroll-wrap = true
+layout-scroll-reverse = true
+
+; If enable-layout-click = true, clicking the layout symbol will switch to this layout
+secondary-layout-symbol = [M]
+
+; Tagas:
+; Available tokens:
+;   %name%
+
+label-floating = F
+
+label-title = %title%
+label-title-maxlen = 35
+label-title-padding = 1
+label-title-foreground = ${colors.foreground}
+label-title-background = ${colors.background}
+
+label-layout = %symbol%
+label-layout-padding = 1
+label-layout-foreground = ${colors.foreground}
+label-layout-background = ${colors.background}
+
+; focused = Active tag on focused monitor
+label-focused = %name%
+label-focused-background = ${colors.tag-focused-background}
+label-focused-foreground = ${colors.foreground}
+label-focused-padding = 2
+label-focused-font = 7
+
+; unfocused = Inactive tag on any monitor
+label-unfocused = %name%
+label-unfocused-background = ${colors.tag-unfocused-background}
+label-unfocused-foreground = ${colors.foreground}
+label-unfocused-padding = 2
+label-unfocused-font = 7
+
+; visible = Active tag on unfocused monitor
+label-visible = %name%
+label-visible-background = ${colors.tag-visible-background}
+label-visible-foreground = ${colors.foreground}
+label-visible-padding = 2
+label-visible-font = 7
+
+; urgent = Tag with urgency hint set
+label-urgent = %name%
+label-urgent-background = ${colors.tag-urgent-background}
+label-urgent-padding = 2
+label-urgent-font = 7
+
+; empty = Tags with no windows assigned
+; This can be set to an empty string to hide empty tags
+label-empty =
+
+; Separator in between workspaces
+; label-separator = |
+
+[module/memory]
+type = internal/memory
+interval = 2
+
+label = %percentage_used%%
+label-foreground = ${colors.foreground}
+
+format-prefix = " "
+format-prefix-font = 2
+format-prefix-foreground = ${colors.icon}
+
+format-padding = 1
+format-margin = 1
+format-background = ${colors.background-alt}
+format-underline = ${colors.background}
+format-overline = ${colors.background}
+
+[module/pulsestatus]
+type=custom/script
+interval = 1
+
+exec = /usr/local/bin/pastatus.sh
+
+label = %output%
+
+format-padding = 1
+format-background = ${colors.background-alt}
+format-overline = ${colors.background}
+format-underline = ${colors.background}
+
+[module/power_usage]
+type=custom/script
+interval = 1
+
+exec = /usr/local/bin/powercheck
+
+label =  %output%
+
+format-padding = 1
+format-background = ${colors.background-alt}
+format-overline = ${colors.background}
+format-underline = ${colors.background}
+
+[module/wlan]
+type = internal/network
+interface = wlp59s0
+interval = 3.0
+ping-interval = 3.0
+
+label-connected = %essid%: %local_ip%
+label-connected-foreground = ${colors.foreground}
+
+label-packetloss = %essid%: %local_ip%
+label-packetloss-foreground =  ${colors.foreground}
+
+label-disconnected =  [disconnected]
+
+format-connected-prefix = 
+format-connected-prefix-font = 6
+format-connected-prefix-padding-right = 1
+format-connected-prefix-foreground = ${colors.icon}
+
+format-connected = <label-connected>
+format-connected-padding = 1
+format-connected-margin = 1
+format-connected-underline = ${colors.background}
+format-connected-overline = ${colors.background}
+format-connected-background = ${colors.background-alt}
+
+format-packetloss-prefix = 
+format-packetloss-prefix-font = 6
+format-packetloss-prefix-padding-right = 1
+format-packetloss-prefix-foreground = ${colors.icon}
+
+format-packetloss = <label-connected>
+format-packetloss-padding = 1
+format-packetloss-margin = 1
+format-packetloss-underline = ${colors.background}
+format-packetloss-overline = ${colors.background}
+format-packetloss-background = ${colors.background-alt}
+
+[module/battery]
+type = internal/battery
+battery = BAT0
+adapter = ADP1
+full-at = 99 
+
+ramp-capacity-0 = 
+ramp-capacity-1 = 
+ramp-capacity-2 = 
+ramp-capacity-3 = 
+ramp-capacity-4 = 
+ramp-capacity-font = 2
+format-capacity-foreground = ${colors.icon}
+
+animation-charging-0 = 
+animation-charging-1 = 
+animation-charging-2 = 
+animation-charging-3 = 
+animation-charging-4 = 
+animation-charging-font = 2
+animation-charging-foreground = ${colors.icon}
+animation-charging-framerate = 750
+
+format-full-prefix = 
+format-full-prefix-foreground = ${colors.icon}
+format-full-prefix-padding-right = 1
+format-full-prefix-padding-left = 0
+
+format-full = <label-full>
+format-full-margin = 1
+format-full-padding = 1
+format-full-underline = ${colors.background}
+format-full-overline = ${colors.background}
+format-full-background = ${colors.background-alt}
+
+format-charging = <animation-charging> <label-charging>
+format-charging-margin = 1
+format-charging-padding = 1
+format-charging-underline = ${colors.background}
+format-charging-overline = ${colors.background}
+format-charging-background = ${colors.background-alt}
+
+format-discharging = <ramp-capacity> <label-discharging>
+format-discharging-margin = 1
+format-discharging-padding = 1
+format-discharging-underline = ${colors.background}
+format-discharging-overline = ${colors.background}
+format-discharging-background = ${colors.background-alt}
+
+[module/pulseaudio]
+type = internal/pulseaudio
+
+ramp-volume-0 = 
+ramp-volume-1 = 
+ramp-volume-2 = 
+
+ramp-volume-foreground = ${colors.icon}
+ramp-volume-font = 6
+ramp-volume-padding-right = 1
+
+label-volume = %percentage%%
+label-volume-foreground = ${colors.foreground}
+
+format-volume = <ramp-volume><label-volume>
+format-volume-padding = 1
+format-volume-margin = 1
+format-volume-background = ${colors.background-alt}
+format-volume-overline = ${colors.background}
+format-volume-underline = ${colors.background}
+
+label-muted = %percentage%%
+
+format-muted-prefix = 
+format-muted-prefix-padding-right = 1
+format-muted-prefix-foreground = ${colors.alert}
+
+format-muted-padding = 1
+format-muted-margin = 1
+format-muted-foreground = ${colors.alert}
+format-muted-background = ${colors.background-alt}
+format-muted-overline = ${colors.background}
+format-muted-underline = ${colors.background}
+
+[module/date]
+type = internal/date
+date = "%a %m-%d-%Y"
+time = %I:%M:%S %p
+interval = 1
+
+label = %date% - %time%
+
+format-prefix = 
+format-prefix-font = 6
+format-prefix-padding-right = 1
+format-prefix-padding-left = 0
+
+format-padding = 1
+format-margin = 1
+format-underline = ${colors.background}
+format-overline = ${colors.background}
+format-prefix-foreground = ${colors.icon}
+format-background = ${colors.background-alt}
+
+[module/restart]
+type = custom/text
+
+content = 
+content-margin = 1
+
+click-left = polybar-msg cmd restart
+
+[module/pad]
+type = custom/text
+
+content = " "
+content-background = ${colors.background}
+content-padding = 0
+
+
+; vim:ft=dosini

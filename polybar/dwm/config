@@ -49,7 +49,7 @@ monitor = ${env:MONITOR:}
 monitor-fallback = eDP1
 monitor-strict = false
 width = 100%
-height = 36
+height = 33
 offset-x = 0%
 ;offset-y = 1%
 radius = 3
@@ -64,7 +64,7 @@ line-color = ${colors.icon}
 
 padding-right = 1
 
-font-0 = Cascadia Mono:size=12;2
+font-0 = Cascadia Code PL:size=12:style=SemiBold
 font-1 = Font Awesome 5 Free:size=10;2
 font-2 = Font Awesome 5 Free Solid:size=10;2
 font-3 = Font Awesome 5 Brands:size=10;2
@@ -119,28 +119,28 @@ label-layout-background = ${colors.background}
 
 ; focused = Active tag on focused monitor
 label-focused = %name%
-label-focused-background = ${colors.tag-focused-background}
+label-focused-background = ${xrdb:color10}
 label-focused-foreground = ${colors.foreground}
 label-focused-padding = 2
 label-focused-font = 7
 
 ; unfocused = Inactive tag on any monitor
 label-unfocused = %name%
-label-unfocused-background = ${colors.tag-unfocused-background}
+label-unfocused-background = ${colors.background}
 label-unfocused-foreground = ${colors.foreground}
 label-unfocused-padding = 2
 label-unfocused-font = 7
 
 ; visible = Active tag on unfocused monitor
 label-visible = %name%
-label-visible-background = ${colors.tag-visible-background}
+label-visible-background = #363636
 label-visible-foreground = ${colors.foreground}
 label-visible-padding = 2
 label-visible-font = 7
 
 ; urgent = Tag with urgency hint set
 label-urgent = %name%
-label-urgent-background = ${colors.tag-urgent-background}
+label-urgent-background = #f44336
 label-urgent-padding = 2
 label-urgent-font = 7
 
@@ -216,7 +216,7 @@ format-connected-prefix-foreground = ${colors.icon}
 format-connected = <label-connected>
 format-connected-padding = 1
 format-connected-margin = 1
-format-connected-underline = ${colors.background}
+format-connected-underline = #000000
 format-connected-overline = ${colors.background}
 format-connected-background = ${colors.background-alt}
 
@@ -330,7 +330,7 @@ format-prefix-padding-left = 0
 
 format-padding = 1
 format-margin = 1
-format-underline = ${colors.background}
+format-underline = ${xrdb:color10}
 format-overline = ${colors.background}
 format-prefix-foreground = ${colors.icon}
 format-background = ${colors.background-alt}

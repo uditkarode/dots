@@ -8,7 +8,7 @@
  */
 
 configuration {
-	font:							"Fantasque Sans Mono 10";
+	font:							"JetBrains Mono 14";
     show-icons:                     true;
 	icon-theme: 					"Papirus";
     display-drun: 					"";

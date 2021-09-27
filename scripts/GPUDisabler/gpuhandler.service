@@ -1,0 +1,10 @@
+[Unit]
+Description=Power-off dGPU on intel profile
+After=graphical.target
+
+[Service]
+Type=oneshot
+ExecStart=/bin/sh -c "handlegpu.sh"
+
+[Install]
+WantedBy=graphical.target

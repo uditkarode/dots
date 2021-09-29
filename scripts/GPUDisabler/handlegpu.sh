@@ -6,8 +6,8 @@ if [[ "$(prime-select query)" = "intel" ]]; then
 
 	# power off GPU
 	echo "Powering off GPU..."
-	echo '\_SB.PCI0.PEG0.PEGP._OFF' | sudo tee /proc/acpi/call
-	echo '\_SB.PCI0.PEG0.PEGP._OFF' | sudo tee /proc/acpi/call
+	echo '\_SB.PCI0.PEG0.PEGP._OFF' > /proc/acpi/call
+	echo '\_SB.PCI0.PEG0.PEGP._OFF' > /proc/acpi/call
 	sleep 0.5
 
 	# cat to confirm - if the output is Error*, it failed

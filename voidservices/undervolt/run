@@ -1,0 +1,4 @@
+#!/bin/sh
+/bin/intel-undervolt apply 2>&1
+/bin/chown -R udit:udit /run/seatd.sock
+/bin/pause

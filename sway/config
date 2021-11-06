@@ -8,9 +8,8 @@ gaps inner 0
 gaps outer 0
 
 # Startup stuff
-exec "swaybg -o eDP-1 --image Pictures/wall.jpg -o DP-3 --image Pictures/wall2.jpg"
+exec "swaybg -o eDP-1 --image Pictures/wall.jpg -o DP-3 --image Pictures/wall.jpg"
 exec "waybar &"
-exec "fusuma &"
 
 seat seat0 xcursor_theme capitaine-cursors 64
 
@@ -20,9 +19,9 @@ bindsym XF86AudioRaiseVolume exec "pamixer --allow-boost -i 5"
 bindsym XF86AudioLowerVolume exec "pamixer --allow-boost -d 5"
 bindsym XF86AudioMute exec "pamixer --toggle-mute"
 
-# Sreen brightness controls
-bindsym XF86MonBrightnessUp exec "light -A 5" # increase screen brightness
-bindsym XF86MonBrightnessDown exec "light -U 5" # decrease screen brightness
+# Screen brightness controls
+bindsym XF86MonBrightnessUp exec "light -A 2" # increase screen brightness
+bindsym XF86MonBrightnessDown exec "light -U 2" # decrease screen brightness
 
 for_window [class=".*"] border pixel 0
 
@@ -30,34 +29,29 @@ for_window [class=".*"] border pixel 0
 # is used in the bar {} block below.
 font Cascadia Code PL:Cascadia Code PL 12
 
-# This font is widely installed, provides lots of unicode glyphs, right-to-left
-# text rendering and scalability on retina/hidpi displays (thanks to pango).
-#font pango:DejaVu Sans Mono 8
-
-# Before i3 v4.8, we used to recommend this one as the default:
-# font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
-# The font above is very space-efficient, that is, it looks good, sharp and
-# clear in small sizes. However, its unicode glyph coverage is limited, the old
-# X core fonts rendering does not support right-to-left and this being a bitmap
-# font, it doesn’t scale on retina/hidpi displays.
-
-# Use Mouse+$mod to drag floating windows to their wanted position
+# use Mouse+$mod to drag floating windows
 floating_modifier $mod
 
-# start a terminal
+# terminal
 bindsym $mod+Return exec kitty
 
-# start the browser
-bindsym $mod+Shift+Return exec chromium
+# browser
+bindsym $mod+Shift+Return exec firefox-wayland
+
+# telegram
+bindsym $mod+Shift+t exec telegram-desktop
+
+# volume controller gui
+bindsym $mod+Shift+p exec pavucontrol
+
+# toggle microphone on/off with indication beep
+bindsym $mod+Shift+m exec togglemic
+
 # kill focused window
 bindsym $mod+q kill
 
-# start dmenu (a program launcher)
-bindsym $mod+d exec "rofi -dpi 90 -show-icons -theme slate -lines 12 -padding 18 -width 60 -location 0 -show drun -modi run -sidebar-mode -columns"
-# There also is the (new) i3-dmenu-desktop which only displays applications
-# shipping a .desktop file. It is a wrapper around dmenu, so you need that
-# installed.
-# bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
+# start program launcher
+bindsym $mod+d exec "wofi --show run"
 
 # change focus
 bindsym $mod+j focus left
@@ -94,7 +88,7 @@ bindsym $mod+f fullscreen toggle
 
 # change container layout (stacked, tabbed, toggle split)
 bindsym $mod+s layout stacking
-bindsym $mod+w layout tabbed
+bindsym $mod+t layout tabbed
 bindsym $mod+e layout toggle split
 
 bindsym $mod+p exec "rofi -show window"
@@ -109,7 +103,7 @@ bindsym $mod+space focus mode_toggle
 bindsym $mod+a focus parent
 
 # focus the child container
-#bindsym $mod+d focus child
+# bindsym $mod+d focus child
 
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.

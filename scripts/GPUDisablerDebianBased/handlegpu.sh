@@ -7,7 +7,6 @@ if [[ "$(prime-select query)" = "intel" ]]; then
 	# power off GPU
 	echo "Powering off GPU..."
 	echo '\_SB.PCI0.PEG0.PEGP._OFF' > /proc/acpi/call
-	echo '\_SB.PCI0.PEG0.PEGP._OFF' > /proc/acpi/call
 	sleep 0.5
 
 	# cat to confirm - if the output is Error*, it failed
@@ -29,10 +28,7 @@ if [[ "$(prime-select query)" = "intel" ]]; then
 	# power off GPU again, just in case
 	echo "Powering off GPU again..."
 	echo '\_SB.PCI0.PEG0.PEGP._OFF' > /proc/acpi/call
-	echo '\_SB.PCI0.PEG0.PEGP._OFF' > /proc/acpi/call
 	sleep 0.5
-	echo '\_SB.PCI0.PEG0.PEGP._OFF' > /proc/acpi/call
-	echo '\_SB.PCI0.PEG0.PEGP._OFF' > /proc/acpi/call
 
 	echo "Turned off GPU, removed the PCI device, unloaded related modules successfully!"
 else

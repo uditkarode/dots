@@ -1,0 +1,15 @@
+#!/bin/bash
+cd /etc/bumblebee
+
+GPUMode="$(cat /etc/gpu_mode)"
+
+if [ "$GPUMode" = "intel" ]; then
+	sudo sed -i 's/intel/nvidia/' /etc/gpu_mode
+	echo "GPU will turn ON on next start"
+elif [ "$GPUMode" = "nvidia" ]; then
+	sudo sed -i 's/nvidia/intel/' /etc/gpu_mode
+	echo "GPU will be turned OFF when you reboot"
+else
+	echo "Configuration rekt! Fix it manually."
+	echo "It will be on nvidia mode if the content of /etc/gpu_mode isn't intel."
+fi

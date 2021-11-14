@@ -1,1 +1,7 @@
-On Dell XPS 15 9570 with a 1050Ti Mobile Max-Q, the scripts disablegpu and enablegpu can be used to turn off or on the gpu respectively, when the X server is NOT running, on a TTY. Bumblebee can also be used, but this method needs you to reboot everytime you need to toggle the power state of the GPU, in which case, bumbleswitch can be used to automate the process.
+You can't power-on the GPU once it's powered off until you restart the system.
+
+To make this simpler, I've set up a few scripts.
+
+Install acpi_call, and add the gpuhandler service from the `voidservices` folder in this repo if you use a runit based system, or move the script and service to their respective places from the GpuDisablerDebianBased directory in this very folder.
+
+use gpuswitch on runit based systems and prime-select on debian based systems to switch.

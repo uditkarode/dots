@@ -1,5 +1,4 @@
 #!/bin/bash
-cd /etc/bumblebee
 
 GPUMode="$(cat /etc/gpu_mode)"
 

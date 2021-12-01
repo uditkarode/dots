@@ -1,6 +1,6 @@
 #!/bin/dash
 
-# fixes blank java apps
+# fix blank java apps
 export _JAVA_AWT_WM_NONREPARENTING=1
 
 # ask QT to use Wayland
@@ -14,12 +14,11 @@ export MOZ_WEBRENDER=1
 export XDG_SESSION_TYPE=wayland
 export XDG_CURRENT_DESKTOP=sway
 
-# fixes some gtk apps launching slow
+# fix some gtk apps launching slow
 export GTK_USE_PORTAL=0
 
-# launch keyring daemon for secrets
-eval $(/usr/bin/gnome-keyring-daemon --start --components=pkcs11,secrets,ssh)
-export SSH_AUTH_SOCK
+# keyring daemon for secrets
+eval $(gnome-keyring-daemon --start --components=gpg,pkcs11,secrets,ssh | sed 's/^\(.*\)/export \1/g')
 
 # finally, launch sway
 sway -c /home/udit/.config/sway/lconfig --my-next-gpu-wont-be-nvidia

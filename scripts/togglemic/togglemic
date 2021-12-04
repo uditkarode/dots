@@ -1,0 +1,8 @@
+#!/bin/bash
+if [ "$(pactl get-source-mute 0)" = "Mute: no" ]; then
+	pactl set-source-mute 0 toggle
+	mpv /home/udit/Files/notification2.oga
+else
+	pactl set-source-mute 0 toggle
+	mpv /home/udit/Files/notification.oga
+fi

@@ -20,5 +20,11 @@ export GTK_USE_PORTAL=0
 # keyring daemon for secrets
 eval $(gnome-keyring-daemon --start --components=gpg,pkcs11,secrets,ssh | sed 's/^\(.*\)/export \1/g')
 
+# store the dbus session bus address in case it's needed later
+echo -n "$DBUS_SESSION_BUS_ADDRESS" > /tmp/.dbus_saddr
+
+# set an env var denoting this script was used to launch sway
+export WM_UKLC=yes
+
 # finally, launch sway
 sway -c /home/udit/.config/sway/lconfig --my-next-gpu-wont-be-nvidia

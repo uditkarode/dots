@@ -8,8 +8,9 @@ gaps inner 0
 gaps outer 0
 
 # Startup stuff
-exec "swaybg -o eDP-1 --image Pictures/wall.jpg -o DP-3 --image Pictures/wall.jpg"
-exec "waybar &"
+exec "swaybg -o eDP-1 --image Pictures/cloudcity.jpg -o DP-3 --image Pictures/cloudcity.jpg"
+exec "sleep 2 && waybar &"
+exec "mako &"
 
 exec_always import-gsettings
 exec_always parunner.sh
@@ -23,8 +24,8 @@ bindsym XF86AudioLowerVolume exec "pamixer --allow-boost -d 5"
 bindsym XF86AudioMute exec "pamixer --toggle-mute"
 
 # Screen brightness controls
-bindsym XF86MonBrightnessUp exec "light -A 2" # increase screen brightness
-bindsym XF86MonBrightnessDown exec "light -U 2" # decrease screen brightness
+bindsym XF86MonBrightnessUp exec "light -A 0.5" # increase screen brightness
+bindsym XF86MonBrightnessDown exec "light -U 0.5" # decrease screen brightness
 
 for_window [class=".*"] border pixel 0
 
@@ -35,11 +36,15 @@ font Cascadia Code PL:Cascadia Code PL 12
 # use Mouse+$mod to drag floating windows
 floating_modifier $mod
 
-# terminal
+# terminals
 bindsym $mod+Return exec kitty
+bindsym $mod+p exec alacritty
 
 # browser
 bindsym $mod+Shift+Return exec firefox-wayland
+
+# lock
+bindsym $mod+l exec "swaylock -e -f -i Pictures/generic.png"
 
 # telegram
 bindsym $mod+Shift+t exec telegram-desktop
@@ -62,7 +67,7 @@ bindsym $mod+d exec "wofi --show run"
 # change focus
 bindsym $mod+j focus left
 bindsym $mod+k focus down
-bindsym $mod+l focus up
+#bindsym $mod+l focus up
 bindsym $mod+semicolon focus right
 
 # alternatively, you can use the cursor keys:
@@ -97,8 +102,6 @@ bindsym $mod+s layout stacking
 bindsym $mod+t layout tabbed
 bindsym $mod+e layout toggle split
 
-bindsym $mod+p exec "rofi -show window"
-
 # toggle tiling / floating
 bindsym $mod+Shift+space floating toggle
 
@@ -113,16 +116,16 @@ bindsym $mod+a focus parent
 
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
-set $ws1 "I"
-set $ws2 "II"
-set $ws3 "III"
-set $ws4 "IV"
-set $ws5 "V"
-set $ws6 "VI"
-set $ws7 "VII"
-set $ws8 "VIII"
-set $ws9 "IX"
-set $ws10 "X"
+set $ws1 "1"
+set $ws2 "2"
+set $ws3 "3"
+set $ws4 "4"
+set $ws5 "5"
+set $ws6 "6"
+set $ws7 "7"
+set $ws8 "8"
+set $ws9 "9"
+set $ws10 "10"
 
 # switch to workspace
 bindsym $mod+1 workspace $ws1
@@ -182,6 +185,13 @@ input type:touchpad {
 
 input "1133:49271:Logitech_USB_Optical_Mouse" {
     accel_profile flat
-    pointer_accel -0.2
+    pointer_accel 0.4
 }
+
+input 1452:591:Keychron_K6 xkb_layout "65-percent-escape-tilde-grave"
+
+input "1452:591:Keychron_K6" {
+    xkb_options caps:escape
+}
+
 

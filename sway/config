@@ -1,15 +1,14 @@
 set $mod Mod4
 
-#output eDP-1 disable
-#output DP-3 pos 0 0 res 1920x1080
-output eDP-1 pos 0 0 res 1920x1080
+output eDP-1 disable
+output DP-3 pos 0 0
 
 gaps inner 0
 gaps outer 0
 
 # Startup stuff
-exec "swaybg -o eDP-1 --image Pictures/cloudcity.jpg -o DP-3 --image Pictures/cloudcity.jpg"
-exec "sleep 2 && waybar &"
+exec "swaybg -o DP-3 --image Pictures/greenrain.jpg -o eDP-1 --image Pictures/greenrain.jpg"
+exec "sleep 1 && waybar &"
 exec "mako &"
 
 exec_always import-gsettings
@@ -42,9 +41,10 @@ bindsym $mod+p exec alacritty
 
 # browser
 bindsym $mod+Shift+Return exec firefox-wayland
+bindsym Alt+Return exec vscode
 
 # lock
-bindsym $mod+l exec "swaylock -e -f -i Pictures/generic.png"
+bindsym $mod+Shift+l exec "swaylock -e -f -i Pictures/generic.png"
 
 # telegram
 bindsym $mod+Shift+t exec telegram-desktop
@@ -65,9 +65,9 @@ bindsym $mod+q kill
 bindsym $mod+d exec "wofi --show run"
 
 # change focus
-bindsym $mod+j focus left
+bindsym $mod+j focus up
 bindsym $mod+k focus down
-#bindsym $mod+l focus up
+bindsym $mod+l focus left
 bindsym $mod+semicolon focus right
 
 # alternatively, you can use the cursor keys:
@@ -79,7 +79,6 @@ bindsym $mod+Right focus right
 # move focused window
 bindsym $mod+Shift+j move left
 bindsym $mod+Shift+k move down
-bindsym $mod+Shift+l move up
 bindsym $mod+Shift+semicolon move right
 
 # alternatively, you can use the cursor keys:
@@ -98,9 +97,8 @@ bindsym $mod+v split v
 bindsym $mod+f fullscreen toggle
 
 # change container layout (stacked, tabbed, toggle split)
-bindsym $mod+s layout stacking
-bindsym $mod+t layout tabbed
-bindsym $mod+e layout toggle split
+bindsym $mod+m layout tabbed
+bindsym $mod+t layout toggle split
 
 # toggle tiling / floating
 bindsym $mod+Shift+space floating toggle

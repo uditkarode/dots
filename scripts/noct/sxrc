@@ -1,0 +1,24 @@
+# fix blank java apps
+export _JAVA_AWT_WM_NONREPARENTING=1
+
+# scale QT apps
+export QT_SCALE_FACTOR=1.55
+
+# secrets
+if [ "$(ps -au $USER | grep gnome-keyring-d | awk '{print $4}')" != "gnome-keyring-d" ]; then
+  eval $(gnome-keyring-daemon --start --components=gpg,pkcs11,secrets,ssh | sed 's/^\(.*\)/export \1/g')
+fi
+
+# start openrgb server
+if [ "$(ps -au udit | grep -i "openrgb-server" | awk '{print $4}' | head -n 2 | head -n 1)" != "openrgb-server" ]; then
+  openrgb --noautoconnect --server &
+fi
+
+# compositor
+picom --experimental-backends --config $HOME/.config/picom/picom.conf &
+
+# Xresources
+xrdb /home/udit/.config/xresources/xresources
+
+# window manager
+i3

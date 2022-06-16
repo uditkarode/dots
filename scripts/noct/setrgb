@@ -1,0 +1,10 @@
+#!/bin/dash
+
+if [ -z "$1" ]; then
+	# orange color (mb light color needs to be reddish to allow red color)
+	openrgb --device 0 --mode static --color FF5100 --device 1 --mode static --color FF5100 --device 3 --color FF5100 --device 4 --mode static --color FF1500 --device 2 --mode direct --color FF5100
+else
+	COLOR="$1"
+	openrgb --nodetect --device 0 --mode static --color $COLOR --device 1 --mode static --color $COLOR --device 2 --mode direct --color $COLOR --device 4 --mode off --device 3 --mode direct --color $COLOR
+fi
+

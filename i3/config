@@ -1,60 +1,60 @@
 set $mod Mod4
 
-gaps inner 7
-gaps outer 7
+gaps inner 0
+gaps top 2
+gaps left 8
+gaps right 8
+gaps bottom 8
 
-# Startup stuff
-exec compton &
-exec "xset -b"
-exec homewifi &
-exec "wal -i /home/udit/Pictures/Wallpapers/sunset.jpg"
+exec --no-startup-id feh --bg-fill /home/udit/.config/walls/horizon.jpg
 
-# Pulse Audio controls
-bindsym XF86AudioRaiseVolume exec "amixer set Master 2.5%+,5%+"
-bindsym XF86AudioLowerVolume exec "amixer set master 2.5%-,5%-"
-bindsym XF86AudioMute exec pactl set-sink-mute 0 toggle # mute sound
+exec_always --no-startup-id import-gsettings.sh
+exec_always --no-startup-id parunner.sh
 
-# Sreen brightness controls
-bindsym XF86MonBrightnessUp exec light -A 5 # increase screen brightness
-bindsym XF86MonBrightnessDown exec light -U 5 # decrease screen brightness
+exec_always --no-startup-id polybar &
+
+default_border pixel 0
+
+bindsym XF86AudioRaiseVolume exec "pamixer --allow-boost -i 5"
+bindsym XF86AudioLowerVolume exec "pamixer --allow-boost -d 5"
+bindsym XF86AudioMute exec "pamixer --toggle-mute"
 
 for_window [class=".*"] border pixel 0
 
-# Font for window titles. Will also be used by the bar unless a different font
-# is used in the bar {} block below.
-font pango:monospace 8
-
-# This font is widely installed, provides lots of unicode glyphs, right-to-left
-# text rendering and scalability on retina/hidpi displays (thanks to pango).
-#font pango:DejaVu Sans Mono 8
-
-# Before i3 v4.8, we used to recommend this one as the default:
-# font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
-# The font above is very space-efficient, that is, it looks good, sharp and
-# clear in small sizes. However, its unicode glyph coverage is limited, the old
-# X core fonts rendering does not support right-to-left and this being a bitmap
-# font, it doesn’t scale on retina/hidpi displays.
-
-# Use Mouse+$mod to drag floating windows to their wanted position
+# use Mouse+$mod to drag floating windows
 floating_modifier $mod
 
-# start a terminal
-bindsym $mod+Return exec i3-sensible-terminal
+# terminals
+bindsym $mod+Return exec kitty
+
+# browser
+bindsym $mod+Shift+Return exec --no-startup-id firefox
+bindsym Alt+Return exec code-oss
+
+bindsym $mod+Shift+l exec "selectrgb"
+
+# telegram
+bindsym $mod+Shift+t exec tg
+
+# screenshot
+bindsym $mod+Shift+s exec takess
+
+# volume controller gui
+bindsym $mod+Shift+p exec pavucontrol
+
+# toggle microphone on/off with indication beep
+#bindsym $mod+Shift+m exec togglemic
 
 # kill focused window
-bindsym $mod+Shift+q kill
+bindsym $mod+q kill
 
-# start dmenu (a program launcher)
+# start program launcher
 bindsym $mod+d exec "rofi -show run"
-# There also is the (new) i3-dmenu-desktop which only displays applications
-# shipping a .desktop file. It is a wrapper around dmenu, so you need that
-# installed.
-# bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 
 # change focus
-bindsym $mod+j focus left
+bindsym $mod+j focus up
 bindsym $mod+k focus down
-bindsym $mod+l focus up
+bindsym $mod+l focus left
 bindsym $mod+semicolon focus right
 
 # alternatively, you can use the cursor keys:
@@ -66,7 +66,6 @@ bindsym $mod+Right focus right
 # move focused window
 bindsym $mod+Shift+j move left
 bindsym $mod+Shift+k move down
-bindsym $mod+Shift+l move up
 bindsym $mod+Shift+semicolon move right
 
 # alternatively, you can use the cursor keys:
@@ -85,11 +84,8 @@ bindsym $mod+v split v
 bindsym $mod+f fullscreen toggle
 
 # change container layout (stacked, tabbed, toggle split)
-bindsym $mod+s layout stacking
-bindsym $mod+w layout tabbed
-bindsym $mod+e layout toggle split
-
-bindsym $mod+p exec "rofi -show window"
+bindsym $mod+m layout tabbed
+bindsym $mod+t layout toggle split
 
 # toggle tiling / floating
 bindsym $mod+Shift+space floating toggle
@@ -101,20 +97,20 @@ bindsym $mod+space focus mode_toggle
 bindsym $mod+a focus parent
 
 # focus the child container
-#bindsym $mod+d focus child
+# bindsym $mod+d focus child
 
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
-set $ws1 "I"
-set $ws2 "II"
-set $ws3 "III"
-set $ws4 "IV"
-set $ws5 "V"
-set $ws6 "VI"
-set $ws7 "VII"
-set $ws8 "VIII"
-set $ws9 "IX"
-set $ws10 "X"
+set $ws1 "1"
+set $ws2 "2"
+set $ws3 "3"
+set $ws4 "4"
+set $ws5 "5"
+set $ws6 "6"
+set $ws7 "7"
+set $ws8 "8"
+set $ws9 "9"
+set $ws10 "10"
 
 # switch to workspace
 bindsym $mod+1 workspace $ws1
@@ -140,23 +136,17 @@ bindsym $mod+Shift+8 move container to workspace $ws8
 bindsym $mod+Shift+9 move container to workspace $ws9
 bindsym $mod+Shift+0 move container to workspace $ws10
 
+# Shortcuts
+bindsym Ctrl+Alt+Right workspace next
+bindsym Ctrl+Alt+Left workspace prev
+
 # reload the configuration file
 bindsym $mod+Shift+c reload
-# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
-bindsym $mod+Shift+r restart
-# exit i3 (logs you out of your X session)
-bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
 
 mode "resize" {
-        # These bindings trigger as soon as you enter the resize mode
-
-        # Pressing left will shrink the window’s width.
-        # Pressing right will grow the window’s width.
-        # Pressing up will shrink the window’s height.
-        # Pressing down will grow the window’s height.
-        bindsym j resize shrink width 10 px or 10 ppt
-        bindsym k resize grow height 10 px or 10 ppt
-        bindsym l resize shrink height 10 px or 10 ppt
+        bindsym h resize shrink width 2 px or 2 ppt
+        bindsym k resize grow height 2 px or 2 ppt
+        bindsym l resize shrink height 2 px or 2 ppt
         bindsym semicolon resize grow width 10 px or 10 ppt
 
         # same bindings, but for the arrow keys
@@ -172,8 +162,3 @@ mode "resize" {
 }
 
 bindsym $mod+r mode "resize"
-
-bar {
-	position top
-	status_command SCRIPT_DIR=/usr/libexec/i3blocks i3blocks
-}

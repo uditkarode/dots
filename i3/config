@@ -10,8 +10,8 @@ exec --no-startup-id feh --bg-fill /home/udit/.config/walls/horizon.jpg
 
 exec_always --no-startup-id import-gsettings.sh
 exec_always --no-startup-id parunner.sh
-
-exec_always --no-startup-id polybar &
+exec_always --no-startup-id polybar
+exec_always --no-startup-id dunst
 
 default_border pixel 0
 
@@ -20,18 +20,20 @@ bindsym XF86AudioLowerVolume exec "pamixer --allow-boost -d 5"
 bindsym XF86AudioMute exec "pamixer --toggle-mute"
 
 for_window [class=".*"] border pixel 0
+for_window [class="floater"] floating enable
+
+# Font for window titles
+font MonoLisa
 
 # use Mouse+$mod to drag floating windows
 floating_modifier $mod
 
 # terminals
-bindsym $mod+Return exec kitty
+bindsym $mod+Return exec kitty --single-instance
+bindsym $mod+i exec smolkitty
 
 # browser
 bindsym $mod+Shift+Return exec --no-startup-id firefox
-bindsym Alt+Return exec code-oss
-
-bindsym $mod+Shift+l exec "selectrgb"
 
 # telegram
 bindsym $mod+Shift+t exec tg
@@ -49,7 +51,8 @@ bindsym $mod+Shift+p exec pavucontrol
 bindsym $mod+q kill
 
 # start program launcher
-bindsym $mod+d exec "rofi -show run"
+bindsym $mod+d exec "rofi -show run -show calc"
+bindsym $mod+s exec "ulauncher"
 
 # change focus
 bindsym $mod+j focus up

@@ -11,27 +11,26 @@
  * -------------------------------------------------------------------------- */
 
 @keyframes blink-warning {
-    70% {
-        color: @light;
-    }
+  70% {
+    color: @light;
+  }
 
-    to {
-        color: @light;
-        background-color: @warning;
-    }
+  to {
+    color: @light;
+    background-color: @warning;
+  }
 }
 
 @keyframes blink-critical {
-    70% {
-      color: @light;
-    }
+  70% {
+    color: @light;
+  }
 
-    to {
-        color: @light;
-        background-color: @critical;
-    }
+  to {
+    color: @light;
+    background-color: @critical;
+  }
 }
-
 
 /* -----------------------------------------------------------------------------
  * Styles
@@ -45,22 +44,23 @@
 
 /* Reset all styles */
 * {
-    border: none;
-    border-radius: 0;
-    min-height: 0;
-    margin: 0;
-    padding: 0;
+  border: none;
+  border-radius: 0;
+  min-height: 0;
+  margin: 0;
+  padding: 0;
 }
 
 /* The whole bar */
 #waybar {
-    /*background: #2e3440;*/
-    /*background: rgba(46, 52, 64, 0.8);*/
-    background: transparent;
-    color: #eceff4;
-    font-family: Jetbrains Mono, xos4 Terminus, FiraCode, Noto Sans;
-    font-size: 13px;
-    font-weight: bold;
+  /*background: #2e3440;*/
+  /*background: rgba(46, 52, 64, 0.8);*/
+  background: transparent;
+  color: #eceff4;
+  font-family: SF Mono;
+  font-size: 19px;
+  font-weight: bold;
+  padding-left: 10px;
 }
 
 /* Each module */
@@ -75,8 +75,8 @@
 #temperature,
 #custom-alsa,
 #tray {
-    padding-left: 10px;
-    padding-right: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
 }
 
 /* Each module that should blink */
@@ -84,9 +84,9 @@
 #memory,
 #temperature,
 #battery {
-    animation-timing-function: linear;
-    animation-iteration-count: infinite;
-    animation-direction: alternate;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
 }
 
 /* Each critical module */
@@ -94,7 +94,7 @@
 #cpu.critical,
 #temperature.critical,
 #battery.critical {
-    color: @critical;
+  color: @critical;
 }
 
 /* Each critical that should blink */
@@ -102,8 +102,8 @@
 #memory.critical,
 #temperature.critical,
 #battery.critical.discharging {
-    animation-name: blink-critical;
-    animation-duration: 2s;
+  animation-name: blink-critical;
+  animation-duration: 2s;
 }
 
 /* Each warning */
@@ -112,163 +112,167 @@
 #cpu.warning,
 #temperature.warning,
 #battery.warning {
-    color: @warning;
+  color: @warning;
 }
 
 /* Each warning that should blink */
 #battery.warning.discharging {
-    animation-name: blink-warning;
-    animation-duration: 3s;
+  animation-name: blink-warning;
+  animation-duration: 3s;
 }
 
 /* And now modules themselves in their respective order */
 
-#mode { /* Shown current Sway mode (resize etc.) */
-    color: @light;
-    background: #bf616a;
+#mode {
+  /* Shown current Sway mode (resize etc.) */
+  color: @light;
+  background: #bf616a;
 }
 
 /* Workspaces stuff */
 #workspaces button {
-    font-weight: bold; /* Somewhy the bar-wide setting is ignored*/
-    /* All these comments are here just for reference */
-    /*border-bottom: 3px solid transparent;
+  font-weight: bold; /* Somewhy the bar-wide setting is ignored*/
+  /* All these comments are here just for reference */
+  /*border-bottom: 3px solid transparent;
     To compensate for the bottom border and still have vertical centering
     padding-top: 3px;*/
-    padding-left: 5px;
-    padding-right: 5px;
-    color: @dark;
-    background: #5e81ac;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: @dark;
+  background: #5e81ac;
+  font-size: 24px;
 }
 
-#workspaces button.focused {
-    background: #81a1c1;
+#workspaces button.active {
+  background: #fbfbfb;
 }
 
-#workspaces button.urgent { /* Not used at all, maybe I'll delete it soon */
-    border-color: #c9545d;
-    color: #c9545d;
+#workspaces button.urgent {
+  /* Not used at all, maybe I'll delete it soon */
+  border-color: #c9545d;
+  color: #c9545d;
 }
 
 #window {
-    margin-right: 40px;
-    margin-left: 40px;
+  margin-right: 40px;
+  margin-left: 40px;
 }
 
 #custom-alsa {
-    background: #d8dee9;
-    color: @dark;
+  background: #d8dee9;
+  color: @dark;
 }
 
 #network {
-    background: #4c566a;
-    color: @light;
+  background: #4c566a;
+  color: @light;
 }
 
 #memory {
-    background: #88c0d0;
-    color: @dark;
+  background: #88c0d0;
+  color: @dark;
 }
 
 #cpu {
-    background: #434c5e;
-    color: @light;
+  background: #434c5e;
+  color: @light;
 }
 
 #temperature {
-    background: #d8dee9;
-    color: @dark;
+  background: #d8dee9;
+  color: @dark;
 }
 
 #custom-keyboard-layout {
-    background: #5e81ac;
-    color: @light;
+  background: #5e81ac;
+  color: @light;
 }
 
 #battery {
-    background: #88c0d0;
-    color: @dark;
+  background: #88c0d0;
+  color: @dark;
 }
 
 #tray {
-    background: #2e3440;
+  background: #2e3440;
 }
 
 #clock.date {
-    background: #2e3440;
-    color: @light;
+  background: #2e3440;
+  color: @light;
 }
 
 #clock.time {
-    background: #eceff4;
-    color: @dark;
+  background: #eceff4;
+  color: @dark;
 }
 
-#pulseaudio { /* Unsused but kept for those who needs it */
-    background: #d8dee9;
-    color: @dark
+#pulseaudio {
+  /* Unsused but kept for those who needs it */
+  background: #d8dee9;
+  color: @dark;
 }
 
 #pulseaudio.muted {
-    /* No styles */
+  /* No styles */
 }
 
 #custom-arrow1 {
-    font-size: 16px;
-    color: #d8dee9;
-    background: transparent;
+  font-size: 16px;
+  color: #d8dee9;
+  background: transparent;
 }
 
 #custom-arrow2 {
-    font-size: 16px;
-    color: #4c566a;
-    background: #d8dee9;
+  font-size: 16px;
+  color: #4c566a;
+  background: #d8dee9;
 }
 
 #custom-arrow3 {
-    font-size: 16px;
-    color: #88c0d0;
-    background: #4c566a;
+  font-size: 16px;
+  color: #88c0d0;
+  background: #4c566a;
 }
 
 #custom-arrow4 {
-    font-size: 16px;
-    color: #434c5e;
-    background: #88c0d0;
+  font-size: 16px;
+  color: #434c5e;
+  background: #88c0d0;
 }
 
 #custom-arrow5 {
-    font-size: 16px;
-    color: #d8dee9;
-    background: #434c5e;
+  font-size: 16px;
+  color: #d8dee9;
+  background: #434c5e;
 }
 
 #custom-arrow6 {
-    font-size: 16px;
-    color: #5e81ac;
-    background: #d8dee9;
+  font-size: 16px;
+  color: #5e81ac;
+  background: #d8dee9;
 }
 
 #custom-arrow7 {
-    font-size: 16px;
-    color: #88c0d0;
-    background: #5e81ac;
+  font-size: 16px;
+  color: #88c0d0;
+  background: #5e81ac;
 }
 
 #custom-arrow8 {
-    font-size: 16px;
-    color: #2e3440;
-    background: #88c0d0;
+  font-size: 16px;
+  color: #2e3440;
+  background: #88c0d0;
 }
 
 #custom-arrow9 {
-    font-size: 16px;
-    color: #eceff4;
-    background: #2e3440;
+  font-size: 16px;
+  color: #eceff4;
+  background: #2e3440;
 }
 
 #custom-arrow10 {
-    font-size: 16px;
-    color: #5e81ac;
-    background: transparent;
+  font-size: 16px;
+  color: #5e81ac;
+  background: transparent;
 }

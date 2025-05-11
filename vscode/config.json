@@ -1,0 +1,109 @@
+{
+  "editor.fontSize": 17,
+  "terminal.integrated.fontSize": 16,
+  "terminal.integrated.fontFamily": "'SF Mono', Monaco",
+  "workbench.list.smoothScrolling": true,
+  "editor.smoothScrolling": true,
+  "terminal.integrated.smoothScrolling": true,
+  "editor.cursorSmoothCaretAnimation": "on",
+  "terminal.integrated.fontWeightBold": "normal",
+  "terminal.integrated.fontWeight": "400",
+  "editor.fontFamily": "'Google Sans Mono', 'IBM Plex Mono', 'SF Mono', 'Google Sans Mono'",
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "javascript.updateImportsOnFileMove.enabled": "always",
+  "emmet.showExpandedAbbreviation": "never",
+  "emmet.showAbbreviationSuggestions": false,
+  "typescript.updateImportsOnFileMove.enabled": "always",
+  "extensions.ignoreRecommendations": true,
+  "explorer.confirmDragAndDrop": false,
+  "git.openRepositoryInParentFolders": "always",
+  "[rust]": {
+    "editor.defaultFormatter": "rust-lang.rust-analyzer"
+  },
+  "[go]": {
+    "editor.defaultFormatter": "golang.go"
+  },
+  "[markdown]": {
+    "editor.formatOnSave": false
+  },
+  "[html]": {
+    "editor.formatOnSave": false
+  },
+  "rust-analyzer.inlayHints.typeHints.enable": false,
+  "editor.inlayHints.enabled": "offUnlessPressed",
+  "rust-analyzer.completion.callable.snippets": "add_parentheses",
+  "javascript.preferences.jsxAttributeCompletionStyle": "none",
+  "typescript.preferences.jsxAttributeCompletionStyle": "none",
+  "haskell.manageHLS": "GHCup",
+  "editor.inlineSuggest.enabled": true,
+  "[python]": {
+    "editor.formatOnType": false,
+    "editor.defaultFormatter": "ms-python.vscode-pylance"
+  },
+  "workbench.colorCustomizations": {
+    "editorIndentGuide.activeBackground1": "#3c3b3b",
+    "editorIndentGuide.background1": "#202020",
+    "editorLineNumber.foreground": "#ffffff20",
+    "editorGutter.deletedBackground": "#ffff00",
+    "htmlEndTagLabels.labelColor": "#303030"
+  },
+  "vue.inlayHints.missingProps": true,
+  "editor.tabSize": 2,
+  "editor.unicodeHighlight.allowedLocales": {
+    "ja": true
+  },
+  "workbench.colorTheme": "CodeSandbox",
+  "redhat.telemetry.enabled": false,
+  "gopls": {
+    "ui.diagnostic.staticcheck": true
+  },
+  "go.toolsManagement.autoUpdate": true,
+  "editor.tokenColorCustomizations": {
+    "textMateRules": [
+      {
+        "scope": "markup.heading.markdown",
+        "settings": {
+          "foreground": "#22c267"
+        }
+      },
+      {
+        "scope": "entity.name.section.markdown",
+        "settings": {
+          "foreground": "#6cd1be"
+        }
+      }
+    ]
+  },
+  "editor.stickyScroll.enabled": false,
+  "notebook.stickyScroll.enabled": false,
+  "workbench.tree.enableStickyScroll": false,
+  "terminal.integrated.stickyScroll.enabled": false,
+  "editor.unicodeHighlight.allowedCharacters": {
+    "！": true
+  },
+  "editor.suggest.showSnippets": false,
+  "cursor.cpp.disabledLanguages": ["plaintext", "markdown", "scminput"],
+  "gitlens.launchpad.indicator.enabled": false,
+  "apc.stylesheet": {
+    ".anysphere-markdown-container-root": "font-size: 15px !important; line-height: 1.5 !important;"
+  },
+  "gitlens.graph.minimap.dataType": "lines",
+  "gitlens.graph.minimap.enabled": false,
+  "window.commandCenter": false,
+  "workbench.layoutControl.enabled": false,
+  "terminal.integrated.inheritEnv": false,
+  "python.analysis.autoImportCompletions": true,
+  "editor.accessibilitySupport": "off",
+  "editor.minimap.autohide": true,
+  "semanticdiff.defaultDiffViewer": true,
+  "semanticdiff.closeOriginalTab": true,
+  "explorer.confirmDelete": false,
+  "workbench.editor.enablePreview": false,
+  "htmlEndTagLabels.labelPrefix": " ←ends→ ",
+  "[typespec]": {
+    "editor.defaultFormatter": "typespec.typespec-vscode"
+  },
+  "typescript.preferences.importModuleSpecifier": "non-relative",
+  "editor.suggestSelection": "recentlyUsedByPrefix",
+  "editor.formatOnSave": true
+}
